@@ -1,5 +1,5 @@
 var urlAplicacion = "https://salonnail.kesug.com";
-// var urlAplicacion = "http://localhost/laravel/salon-manicura-git-push/public";
+// var urlAplicacion = "http://localhost/laravel/salon-manicura-git/public";
 // var oldUrlReprogramarCita='';
 var reprogramarCitaComprobarEmpleado = false;
 var idCitaReprogramarComprobarEmpleado='';

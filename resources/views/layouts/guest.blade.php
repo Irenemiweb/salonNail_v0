@@ -48,7 +48,7 @@
 //     var urlObjeto = new URL(window.location.href);
 
 //     // Construir la nueva URL con la ruta pasada como parámetro
-//     var nuevaURL = urlObjeto.origin + '/laravel/salon-manicura-git-push/public/' + ruta + urlObjeto.search + urlObjeto.hash;
+//     var nuevaURL = urlObjeto.origin + '/laravel/salon-manicura-git/public/' + ruta + urlObjeto.search + urlObjeto.hash;
 
 //     // Actualizar la URL en el historial del navegador sin recargar la página
 //     window.history.pushState({}, '', nuevaURL);

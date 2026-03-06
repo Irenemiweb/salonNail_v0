@@ -10,7 +10,7 @@ var tabContent = document.querySelectorAll(".tabcontent");
 var tabLinksAdministrator1 = document.querySelectorAll(".tablinksAdministrator");
 var tabLinksAdministrator = [...tabLinksAdministrator1, ...tabLinks2];
 var tabContentAdministrator = document.querySelectorAll('.tabcontentAdministrator');
-// var initUrlImage= 'http://localhost/laravel/salon-manicura-git-push/';
+// var initUrlImage= 'http://localhost/laravel/salon-manicura-git/';
 var initUrlImage= 'http://salonnail.kesug.com/';
 tabLinksAdministrator.forEach(function(el) {
     el.addEventListener("click", openTabsAdministrator);
@@ -2263,7 +2263,7 @@ function resertFormNewService(){
 
     let urlObjeto = new URL(window.location.href);
     let baseUrl = urlObjeto.origin;
-    // let baseUrl = 'http://localhost/laravel/salon-manicura-git-push/public';
+    // let baseUrl = 'http://localhost/laravel/salon-manicura-git/public';
     let randomColorUrl = baseUrl + '/storage/colors_option/random-color.svg';
     visualizadorColorElegido.setAttribute('data-random-color-url', randomColorUrl);
     visualizadorColorElegido.innerHTML=`

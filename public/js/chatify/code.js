@@ -1784,7 +1784,7 @@ emojiPicker.on("emoji", (emoji) => {
 // }
 function playNotificationSound(soundName, condition = false) {
     if ((document.hidden || condition) && chatify.sounds.enabled) {
-      const baseUrl = window.location.origin + "/laravel/salon-manicura-git-push";
+      const baseUrl = window.location.origin + "/laravel/salon-manicura-git";
     //   const baseUrl = window.location.origin;
       const sound = new Audio(
         `${baseUrl}/${chatify.sounds.public_path}/${chatify.sounds[soundName]}`

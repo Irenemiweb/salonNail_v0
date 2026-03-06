@@ -9,7 +9,7 @@ var oldUrlReprogramarCita='';
 //si la url contiene init
 if (window.location.pathname.includes('/init')) {
     // Redirige a la raíz del dominio
-    window.location.href = window.location.origin + '/laravel/salon-manicura-git-push/public/'
+    window.location.href = window.location.origin + '/laravel/salon-manicura-git/public/'
     // window.location.href = window.location.origin + '/';
 }
 
@@ -1665,7 +1665,7 @@ function addActiveHora(index, elemento){
                         console.log('Ningún empleado disponible');
                         Swal.fire({
                             // imageUrl: 'https://salonnail.kesug.com/storage/images/ups_manicura.png',
-                            imageUrl: 'http://localhost/laravel/salon-manicura-git-push/public/storage/images/ups_manicura.png', // Imagen personalizada como icono
+                            imageUrl: 'http://localhost/laravel/salon-manicura-git/public/storage/images/ups_manicura.png', // Imagen personalizada como icono
                             imageWidth: 128, // Tamaño de la imagen
                             // imageHeight: 80, // Tamaño de la imagen
                             imageAlt: 'África Nails studio dice: Esta hora no está disponible, selecciona otra.', // Texto alternativo para la imagen
@@ -1674,7 +1674,7 @@ function addActiveHora(index, elemento){
                             background: '#ffff', // Color de fondo suave
                             backdrop: `
                                 rgba(17, 17, 18, 0.4)
-                                url("http://localhost/laravel/salon-manicura-git-push/public/storage/images/nyan-cat.gif")
+                                url("http://localhost/laravel/salon-manicura-git/public/storage/images/nyan-cat.gif")
                                 left top
                                 no-repeat
                             `,

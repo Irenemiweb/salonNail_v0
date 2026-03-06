@@ -158,7 +158,7 @@ function initializeCalendar() {
                     }else{
                          const iconImg = document.createElement('img');
                          iconImg.classList.add('b-icon_img_I0kuC', 'icons_icon_lMJWA');
-                         iconImg.src = "/laravel/salon-manicura-git-push/storage/calendar/notaCliente.svg";
+                         iconImg.src = "/laravel/salon-manicura-git/storage/calendar/notaCliente.svg";
                          iconImg.style.zIndex = '2';
                          iconImg.style.left = '5px';
                          iconImg.style.position = 'relative';
@@ -171,7 +171,7 @@ function initializeCalendar() {
                     }else if(evento.extendedProps.seleccionado_cliente === 1){
                         const iconImgCorazon = document.createElement('img');
                         iconImgCorazon.classList.add('b-icon_img_I0kuC', 'icons_icon_lMJWA');
-                        iconImgCorazon.src = "/laravel/salon-manicura-git-push/storage/calendar/corazonRojoPequenio.svg";
+                        iconImgCorazon.src = "/laravel/salon-manicura-git/storage/calendar/corazonRojoPequenio.svg";
                         iconImgCorazon.style.zIndex = '1';
                         iconImgCorazon.style.left = '0px';
                         iconImgCorazon.style.position = 'relative';

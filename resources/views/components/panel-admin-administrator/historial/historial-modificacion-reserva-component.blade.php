@@ -76,7 +76,7 @@
                                                         </div>
                                                         <div class="styles_wrapper_hb1CA justify-content-between">
                                                             <div class="inputsNewService styles_slotLeft_k29NgClienteHistorialModificaReserva" >
-                                                                {{-- <img data-color="randomColor" width="24px" style="height: 24px;" class="b-icon_img_I0kuC index_colorPicker_dCcsj" src="http://localhost/laravel/salon-manicura-git-push/public/storage/colors_option/random-color.svg" alt="colores"> --}}
+                                                                {{-- <img data-color="randomColor" width="24px" style="height: 24px;" class="b-icon_img_I0kuC index_colorPicker_dCcsj" src="http://localhost/laravel/salon-manicura-git/public/storage/colors_option/random-color.svg" alt="colores"> --}}
                                                                 Selecciona cliente.
                                                             </div>
                                                             <div class="styles_slotRight_TkOzM">
@@ -116,7 +116,7 @@
                                                         </div>
                                                         <div class="styles_wrapper_hb1CA justify-content-between">
                                                             <div class="inputsNewService styles_slotLeft_k29NgTodosUsersHistorialModificaReserva" >
-                                                                {{-- <img data-color="randomColor" width="24px" style="height: 24px;" class="b-icon_img_I0kuC index_colorPicker_dCcsj" src="http://localhost/laravel/salon-manicura-git-push/public/storage/colors_option/random-color.svg" alt="colores"> --}}
+                                                                {{-- <img data-color="randomColor" width="24px" style="height: 24px;" class="b-icon_img_I0kuC index_colorPicker_dCcsj" src="http://localhost/laravel/salon-manicura-git/public/storage/colors_option/random-color.svg" alt="colores"> --}}
                                                                 Selecciona responsable.
                                                             </div>
                                                             <div class="styles_slotRight_TkOzM">

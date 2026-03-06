@@ -452,7 +452,7 @@ function cambiarURL2(ruta) {
 
 
     // Construir la nueva URL con la ruta pasada como parámetro
-     var nuevaURL = urlObjeto.origin + '/laravel/salon-manicura-git-push/public/' + ruta;//localhost
+     var nuevaURL = urlObjeto.origin + '/laravel/salon-manicura-git/public/' + ruta;//localhost
     // let nuevaURL = urlObjeto.origin + '/' + ruta + urlObjeto.search + urlObjeto.hash; salonnail.kesug
 
     // Actualizar la URL en el historial del navegador sin recargar la página
@@ -1092,7 +1092,7 @@ function checkShadowOffcanvas(){
 
 //COMPRUEBA QUE AL PULSAR "GUARDAR" NO HAYA NINGÚN ELEMENTO SELECCIONADO, EN CASO CONTRARIO MUESTRA AVISO
 // const imageUrl = 'https://salonnail.kesug.com/storage/logo/Frame20.png';
-const imageUrl = 'http://localhost/laravel/salon-manicura-git-push/public/storage/logo/Frame20.png';
+const imageUrl = 'http://localhost/laravel/salon-manicura-git/public/storage/logo/Frame20.png';
 var labels = document.querySelectorAll('.inputsCategoriasSecundarias label');
 function comprobarCheck() {
     // var modales = document.querySelectorAll('.modal');
