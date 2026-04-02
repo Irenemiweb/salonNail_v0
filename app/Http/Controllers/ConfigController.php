@@ -283,15 +283,20 @@ public function createTicket(Request $request){
 
 
 public function get_all_clients() {
-    $clientes = User::where('is_admin', 0)  // Filtra los usuarios cuyo campo is_admin sea 0
-    ->orderBy('name', 'asc') // Ordena por 'name' en orden ascendente
-    ->orderBy('primer_apellido', 'asc') // Luego, ordena por 'primer_apellido' en orden ascendente
+    // $clientes = User::where('is_admin', 0)  // Filtra los usuarios cuyo campo is_admin sea 0
+    // ->orderBy('name', 'asc') // Ordena por 'name' en orden ascendente
+    // ->orderBy('primer_apellido', 'asc') // Luego, ordena por 'primer_apellido' en orden ascendente
+    // ->get();
+    $clientes = User::orderBy('name', 'asc')      // Ordena por 'name' en orden ascendente
+    ->orderBy('primer_apellido', 'asc')       // Luego, ordena por 'primer_apellido' en orden ascendente
     ->get();
+    // dd($clientes);
     // Crear un array con las iniciales de cada cliente
     $iniciales = $clientes->map(function($cliente) {
         // Obtener las iniciales del nombre y primer apellido
-        $inicial = strtoupper(substr($cliente->name, 0, 1)) . strtoupper(substr($cliente->primer_apellido, 0, 1));
-
+        // $inicial = strtoupper(substr($cliente->name, 0, 1)) . strtoupper(substr($cliente->primer_apellido, 0, 1));
+        $inicial = mb_strtoupper(mb_substr($cliente->name, 0, 1, 'UTF-8'), 'UTF-8')
+         . mb_strtoupper(mb_substr($cliente->primer_apellido, 0, 1, 'UTF-8'), 'UTF-8');
         return $inicial;
     });
     // Verificar si se encontraron clientes
@@ -771,6 +776,7 @@ public function getReservaById(Request $request){
     }
 
     public function getFristClient(Request $request){
+        // dd($request->all());
         $firstClient='';
         if($request->has('cliente_id') && $request->input('cliente_id') === 'primero'){
             $firstClient = User::orderBy('name', 'asc')
@@ -779,13 +785,16 @@ public function getReservaById(Request $request){
         }else{
             $firstClient = User::find($request->input('cliente_id'));
         }
+
         // $firstClient = User::orderBy('name', 'asc')
         // ->orderBy('primer_apellido', 'asc')
         // ->first();
         // Crear un array con las iniciales de cada cliente
-        $inicial = strtoupper(substr($firstClient->name, 0, 1)) . strtoupper(substr($firstClient->primer_apellido, 0, 1));
+        // $inicial = strtoupper(substr($firstClient->name, 0, 1)) . strtoupper(substr($firstClient->primer_apellido, 0, 1));
+        $inicial = mb_strtoupper(mb_substr($firstClient->name, 0, 1, 'UTF-8'), 'UTF-8')
+         . mb_strtoupper(mb_substr($firstClient->primer_apellido, 0, 1, 'UTF-8'), 'UTF-8');
         $userId = $firstClient->id; // Obtén el ID del usuario autenticado
-
+        // dd($inicial);
         $now = Carbon::now();
 
         // Obtener citas próximas para el usuario autenticado
@@ -853,10 +862,13 @@ public function getReservaById(Request $request){
         } else {
             $fechaUltimaReserva = '-';  // Mensaje si no hay reservas
         }
+        // dd($firstClient);
 
         $descuento = $firstClient->descuentos->first();  // Obtiene el primer descuento
+        // dd($descuento);
         $porcentaje = $descuento->porcentaje;
         $totalInasistencias = $firstClient->inasistencias()->count();
+        // dd($inicial);
         return response()->json([
             'firstClient' => $firstClient,
             'proximasFclient' => $proximasFclient,

@@ -29,15 +29,20 @@ class Principal extends Component
     public $porcentaje;
     public function __construct()
     {
-        $clientes = User::where('is_admin', 0)  // Filtra los usuarios cuyo campo is_admin sea 0
-        ->orderBy('name', 'asc') // Ordena por 'name' en orden ascendente
-        ->orderBy('primer_apellido', 'asc') // Luego, ordena por 'primer_apellido' en orden ascendente
-        ->get();
-
+        // $clientes = User::where('is_admin', 0)  // Filtra los usuarios cuyo campo is_admin sea 0
+        // ->orderBy('name', 'asc') // Ordena por 'name' en orden ascendente
+        // ->orderBy('primer_apellido', 'asc') // Luego, ordena por 'primer_apellido' en orden ascendente
+        // ->get(); esto es para borrar
+    $clientes = User::orderBy('name', 'asc')      // Ordena por 'name' en orden ascendente
+    ->orderBy('primer_apellido', 'asc')       // Luego, ordena por 'primer_apellido' en orden ascendente
+    ->get();
+    // dd($clientes);
     // Crear un array con las iniciales de cada cliente
     $iniciales = $clientes->map(function($cliente) {
         // Obtener las iniciales del nombre y primer apellido
-        $inicial = strtoupper(substr($cliente->name, 0, 1)) . strtoupper(substr($cliente->primer_apellido, 0, 1));
+        // $inicial = strtoupper(substr($cliente->name, 0, 1)) . strtoupper(substr($cliente->primer_apellido, 0, 1));
+        $inicial = mb_strtoupper(mb_substr($cliente->name, 0, 1, 'UTF-8'), 'UTF-8')
+         . mb_strtoupper(mb_substr($cliente->primer_apellido, 0, 1, 'UTF-8'), 'UTF-8');
 
         return $inicial;
     });

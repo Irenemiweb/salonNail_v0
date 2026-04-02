@@ -1,176 +1,353 @@
 <div class="edit_customerForm_XJmIP" style="display:block">
     <div class="">
-        <header style="background-color: transparent" class="b-custom-header b-custom-header_header_oZL1I b-custom-header_headerPadding_gg5dx">
-            <div class="b-custom-header_left b-custom-header_hasIcon_uCjMI b-custom-header_hasIconEllipsis_gYB6P b-custom-header_left_bWmRf">
-                <span class="b-icon iconFont icon-nav-arrow-left b-custom-header_icon_XtAgm" data-testid="b-custom-header-icon-back" style="font-size: 20px;"></span>
-                <div>
-                    <div data-testid="add-new-client-header" class="b-custom-header_headerTitle_ogW55 txt--ellipsis">
-                        <span class="b-custom-header_title_GTxIs b-custom-header_wordBreakAll_U_pxk"> Añadir nuevo cliente </span>
-                    </div>
+        <header style="background-color: transparent"
+            class="b-custom-header b-custom-header_header_oZL1I b-custom-header_headerPadding_gg5dx">
+            {{-- <div class="b-custom-header_left b-custom-header_hasIcon_uCjMI b-custom-header_hasIconEllipsis_gYB6P b-custom-header_left_bWmRf"> --}}
+            <span class="b-icon iconFont icon-nav-arrow-left b-custom-header_icon_XtAgm"
+                data-testid="b-custom-header-icon-back" style="font-size: 20px;padding-top: 7px;">
+            </span>
+            <div class="min-w-0 flex-1">
+                <div data-testid="add-new-client-header"
+                    class="b-custom-header_headerTitle_ogW55 txt--ellipsis _headerTitle_170cv_28 truncate">
+                    <span class="b-custom-header_title_GTxIs b-custom-header_wordBreakAll_U_pxk"> Añadir nuevo
+                        cliente </span>
                 </div>
             </div>
+            {{-- </div> --}}
             <div class="b-custom-header_right b-custom-header_right_uT_uU">
-                <label for="89checkbox_blacklisted" class="b-input-choice_container_aoM6F b-input-choice_containertoggler--revert_I2Vvu">
+                <label for="89checkbox_blacklisted"
+                    class="b-input-choice_container_aoM6F b-input-choice_containertoggler--revert_I2Vvu">
                     <div class="position-relative">
-                       <x-panel-admin-administrator.clientes.botones.toggel/>
+                        <x-panel-admin-administrator.clientes.botones.toggel />
                     </div>
                     <div class="b-input-choice_label_dgjUA b-input-choice_size--14_eTI26" style="margin-right: 8px;">
                         <div class="index_inputChoiceTitle_vWBIW"> ¿Activar las reservas online? </div>
-                        <div class="index_inputChoiceDescription_RM6Yg"> sí </div>
+                        {{-- <div class="index_inputChoiceDescription_RM6Yg"> sí </div> --}}
                     </div>
                 </label>
                 <div class="d-flex flex-column flex-sm-row gap-2">
-                    <button style="padding: 1rem 36px;" type="button" class="b-mr-4 b-button_button_QiVJW b-button_theme--secondary_Nu5MN" data-testid="add-customer">Añadir</button>
-                    <button style="padding: 1rem 36px;" type="button" class="b-button_button_QiVJW" data-testid="add-and-invite-customer">Añadir e invitar</button>
+                    <button style="padding: 1rem 20px;" type="button"
+                        class="add-customer-button b-mr-4 b-button_button_QiVJW b-button_theme--secondary_Nu5MN"
+                        data-testid="add-customer">Añadir</button>
+                    <button style="padding: 1rem 20px;" type="button"
+                        class="addInvit-customer-button b-button_button_QiVJW"
+                        data-testid="add-and-invite-customer">Añadir e invitar</button>
                 </div>
             </div>
         </header>
         <div class="layout-with-side-menu_wrapper_u82LO">
             {{-- menu lateral --}}
-            <ul style="padding: 0px" class="index_menu_oOSnb layout-with-side-menu_menu_sGBG5">
+            <ul style="padding: 0px"
+                class="index_menu_oOSnb layout-with-side-menu_menu_sGBG5 lateral-menu-info-clients">
                 <li data-testid="general">
-                    <div style="" data-testid="Información general" class="b-list-item_item_e5SMN index_menuItem_ZFuFK index_menuItemActive_m3kE7">
+                    <div style="" data-testid="client_info_general"
+                        class="b-list-item_item_e5SMN index_menuItem_ZFuFK index_menuItemActive_m3kE7">
                         <p class="b-list-item_text_K1ZUI">Información general</p>
                     </div>
                 </li>
                 <li data-testid="additional-info">
-                    <div data-testid="Información adicional" class="b-list-item_item_e5SMN index_menuItem_ZFuFK">
+                    <div data-testid="client_info_additional" class="b-list-item_item_e5SMN index_menuItem_ZFuFK">
                         <p class="b-list-item_text_K1ZUI">Información adicional</p>
                     </div>
                 </li>
                 <li data-testid="privacy">
-                    <div data-testid="privacidad" class="b-list-item_item_e5SMN index_menuItem_ZFuFK">
+                    <div data-testid="client_info_privacy" class="b-list-item_item_e5SMN index_menuItem_ZFuFK">
                         <p class="b-list-item_text_K1ZUI">privacidad</p>
                     </div>
                 </li>
             </ul>
-            <div class="scrollable layout-with-side-menu_content_Q5C9O">
-                <div class="index_tabContent_tnobM scrollable">
-                {{-- contenido de pestañas --}}
+            {{-- info general cliente --}}
+            <div class="scrollable layout-with-side-menu_content_Q5C9O cambioTotal006">
+                <div class="scrollable cambioTotal006" style="justify-content: center;">
+                    {{-- contenido de pestañas --}}
                     {{-- info general --}}
-                    <div class="index_wrapper_X2m39 index_tabContainer_Ji5zT">
+                    <div class="index_wrapper_X2m39 index_tabContainer_Ji5zT client_info_general"
+                        id="client_info_general">
                         {{-- imagen cliente --}}
                         <div class=" justify-content-center d-flex b-mb-4">
                             <div class="b-p-relative b-cursor-pointer">
-                                <input type="file" accept="image/*" style="display: none;">
-                                <div title=" " class="b-avatar_avatar_pJzSu" style="width: 76px; height: 76px; flex: 0 0 76px;">
-                                    <div class="b-avatar_avatarInitials_W2DQ5" style="font-size: 28px;">  </div>
+                                <input id="avatarInput" type="file" accept="image/*" style="display: none;">
+                                <div title=" " class="b-avatar_avatar_pJzSu"
+                                    style="width: 76px; height: 76px; flex: 0 0 76px;">
+                                    <div id="avatarPreview" class="b-avatar_avatarInitials_W2DQ5"
+                                        style="font-size: 28px;"> </div>
                                 </div>
                                 <div class="index_avatarEdit_IgKa1 b-flex b-justify-center b-items-center b-p-absolute">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" role="img" class="b-icon"><path fill="currentColor" fill-rule="evenodd" d="M12 2a.9.9 0 0 1 .9.9v8.2h8.2a.9.9 0 0 1 0 1.8h-8.2v8.2a.9.9 0 1 1-1.8 0v-8.2H2.9a.9.9 0 1 1 0-1.8h8.2V2.9A.9.9 0 0 1 12 2Z" clip-rule="evenodd"></path></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none"
+                                        viewBox="0 0 24 24" role="img" class="b-icon">
+                                        <path fill="currentColor" fill-rule="evenodd"
+                                            d="M12 2a.9.9 0 0 1 .9.9v8.2h8.2a.9.9 0 0 1 0 1.8h-8.2v8.2a.9.9 0 1 1-1.8 0v-8.2H2.9a.9.9 0 1 1 0-1.8h8.2V2.9A.9.9 0 0 1 12 2Z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
                                 </div>
                             </div>
                         </div>
                         <div class="">
                             <div class="form-groupInput mb-3">
-                                <input onfocus="initCountLeathersTextArea()" onclick="initCountLeathersTextArea()" type="text" placeholder=" "
-                                    class="gualazonF inputsNewService" id="nombreCliente001"
-                                    value="{{ old('nombreServicio') }}" required
-                                    name="nombreCliente001"
-                                    onblur="verificarInput('titulo')"/>
+                                <input onfocus="initCountLeathersTextArea()" onclick="initCountLeathersTextArea()"
+                                    type="text" placeholder=" " class="gualazonF" id="nombreCliente001"
+                                    value="{{ old('nombreCliente001') }}" required name="nombreCliente001" />
                                 <label for="nombreCliente001" class="styles_label_hleTI">Nombre</label>
                             </div>
                             <div class="form-groupInput mb-3">
-                                <input onfocus="initCountLeathersTextArea()" onclick="initCountLeathersTextArea()" type="text" placeholder=" "
-                                    class="gualazonF inputsNewService" id="apellidoCliente001"
-                                    value="{{ old('nombreServicio') }}" required
-                                    name="apellidoCliente001"
-                                    onblur="verificarInput('titulo')"/>
+                                <input onfocus="initCountLeathersTextArea()" onclick="initCountLeathersTextArea()"
+                                    type="text" placeholder=" " class="gualazonF" id="apellidoCliente001"
+                                    value="{{ old('apellidoCliente001') }}" required name="apellidoCliente001" />
                                 <label for="apellidoCliente001" class="styles_label_hleTI">Apellido</label>
                             </div>
                             <div class="form-groupInput mb-3">
-                                <input onfocus="initCountLeathersTextArea()" onclick="initCountLeathersTextArea()" type="text" placeholder=" "
-                                    class="gualazonF inputsNewService" id="carnetNumeroCliente001"
-                                    value="{{ old('nombreServicio') }}" required
-                                    name="carnetNumeroCliente001"
-                                    onblur="verificarInput('titulo')"/>
-                                <label for="carnetNumeroCliente001" class="styles_label_hleTI">Número de identificación fiscal</label>
+                                <input onfocus="initCountLeathersTextArea()" onclick="initCountLeathersTextArea()"
+                                    type="text" placeholder=" " class="gualazonF" id="carnetNumeroCliente001"
+                                    value="{{ old('carnetNumeroCliente001') }}" required
+                                    name="carnetNumeroCliente001" />
+                                <label for="carnetNumeroCliente001" class="styles_label_hleTI">Número de
+                                    identificación fiscal</label>
                             </div>
-                            <div class="b-row">
-                                <div class="b-col b-col-6">
-                                    <div class="form-groupInput mb-3">
-                                        <input onfocus="initCountLeathersTextArea()" onclick="initCountLeathersTextArea()" type="text" placeholder=" "
-                                            class="gualazonF inputsNewService" id="descuentoCliente001"
-                                            value="0%" required
-                                            name="descuentoCliente001"
-                                            onblur="verificarInput('titulo')"/>
-                                        <label for="descuentoCliente001" class="styles_label_hleTI">Descuento cliente</label>
+                            <div class="">
+                                <div class="b-row descuento_confianza" style="margin-left: auto;margin-right: auto;">
+                                    <div class="b-col b-col-6" style="padding-right:11px;padding-left: 0px;">
+                                        <div class="form-groupInput mb-3">
+                                            <input onfocus="initCountLeathersTextArea()"
+                                                onclick="initCountLeathersTextArea()" type="text" placeholder=" "
+                                                class="gualazonF inputsNewService" id="descuentoCliente001"
+                                                value="0%" required name="descuentoCliente001"
+                                                onblur="verificarInput('titulo')"
+                                                oninput="formatearPorcentaje(this)" />
+                                            <label for="descuentoCliente001" class="styles_label_hleTI">Descuento
+                                                cliente</label>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="b-col b-col-6 index_dropdown_yxIjB index_has--shadow_s6YH1 index_is--overlay_JG_3k index_trustedClient_psrIx b-mb-4">
-                                    <div class="index_dropdown_yxIjB index_has--shadow_s6YH1 index_is--overlay_JG_3k index_trustedClient_psrIx b-mb-4" data-testid="trusted-client-select"><div class="index_toggle_sBt35"><div data-testid="select-dropdown-"><div class="styles_focusedOrFilled_dNjQS styles_size--md_sPOha styles_theme--default_x92vh styles_slotTheme--blank_iI8Uf styles_slotTheme--default_vYr1T" data-testid="select-input-"><div class="styles_outerWrapper_NumuG" style="min-width: 0px;"><div class="styles_labelWrapper_isbmo"><label class="styles_label_hleTI"> Cliente de confianza </label></div><div class="styles_wrapper_hb1CA"><input readonly value="No" placeholder="" id="uid-152-input" type="text" autocomplete="off" inputmode="text" class="styles_field_Bhxvq" style="min-width: 0px; text-transform: none;"><div class="styles_slotRight_TkOzM"><i data-testid="select-input-toggle-" class="index_toggleIcon_EqQez"></i></div></div></div></div></div></div></div>
-                                    <div class="index_content_Z_JCn index_position_FV9jY index_position--bottom-left_prIxb index_position--bottom-left_prIxb33">
-                                        <div class="scrollable index_scrollable_qm3Zl index_scrollable_BtJqS">
-                                            <ul class="list" style="padding: 0px;margin: 0px;">
-                                                <li data-testid="dropdown-option-false">
-                                                    <div class="index_defaultItem_pKlHs index_--selected_oUDGp index_--highlighted__3J43">
-                                                        <div class="index_defaultItemInner_HCCY6"> No </div>
+                                    <div class="b-col b-col-6 index_dropdown_yxIjB index_has--shadow_s6YH1 index_is--overlay_JG_3k index_trustedClient_psrIx b-mb-4"
+                                        style="padding:0px;">
+                                        <div class="index_dropdown_yxIjB index_has--shadow_s6YH1 index_is--overlay_JG_3k index_trustedClient_psrIx b-mb-4"
+                                            data-testid="trusted-client-select">
+                                            <div class="index_toggle_sBt35">
+                                                <div data-testid="select-dropdown-">
+                                                    <div class="styles_focusedOrFilled_dNjQS styles_size--md_sPOha styles_theme--default_x92vh styles_slotTheme--blank_iI8Uf styles_slotTheme--default_vYr1T"
+                                                        data-testid="select-input-">
+                                                        <div onclick="abrirModalCategorias('.conteneforClienteConfianza')"
+                                                            class="styles_outerWrapper_NumuG" style="min-width: 0px;">
+                                                            <div class="styles_labelWrapper_isbmo"><label
+                                                                    class="styles_label_hleTI"> Cliente de confianza
+                                                                </label></div>
+                                                            <div class="styles_wrapper_hb1CA"><input readonly
+                                                                    value="No" placeholder="" id="uid-152-input"
+                                                                    type="text" autocomplete="off"
+                                                                    inputmode="text" class="styles_field_Bhxvq"
+                                                                    style="min-width: 0px; text-transform: none;">
+                                                                <div class="styles_slotRight_TkOzM"><i
+                                                                        data-testid="select-input-toggle-"
+                                                                        class="index_toggleIcon_EqQez"></i></div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </li>
-                                                <li data-testid="dropdown-option-true">
-                                                    <div style="border: none" class="index_defaultItem_pKlHs index_defaultItemLast_G_jYj">
-                                                        <div class="index_defaultItemInner_HCCY6"> Sí </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="conteneforClienteConfianza" style="display: none"
+                                            class="conteneforClienteConfianza index_content_Z_JCn index_position_FV9jY index_position--bottom-left_prIxb index_position--bottom-left_prIxb33">
+                                            <div class="scrollable index_scrollable_qm3Zl index_scrollable_BtJqS">
+                                                <ul class="list" style="padding: 0px;margin: 0px;">
+                                                    <li data-testid="dropdown-option-false">
+                                                        <div data-option="No"
+                                                            class="index_defaultItem_pKlHs index_--selected_oUDGp index_--highlighted__3J43">
+                                                            <div class="index_defaultItemInner_HCCY6"> No </div>
+                                                        </div>
+                                                    </li>
+                                                    <li data-testid="dropdown-option-true">
+                                                        <div data-option="Si" style="border: none"
+                                                            class="index_defaultItem_pKlHs index_defaultItemLast_G_jYj">
+                                                            <div class="index_defaultItemInner_HCCY6"> Sí </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div style="font-weight: 800;" class="b-heading-xs b-my-4"> Contacto </div>
                                 <div>
                                     <div class="form-groupInput mb-3">
-                                        <input onfocus="initCountLeathersTextArea()" onclick="initCountLeathersTextArea()" type="text" placeholder=" "
-                                            class="gualazonF inputsNewService" id="telefonoCliente001"
-                                            value="" required
-                                            name="telefonoCliente001"
-                                            onblur="verificarInput('titulo')"/>
-                                        <label for="telefonoCliente001" class="styles_label_hleTI">Número de telefono</label>
+                                        <input onfocus="initCountLeathersTextArea()"
+                                            onclick="initCountLeathersTextArea()" type="text" placeholder=" "
+                                            class="gualazonF" id="telefonoCliente001" value="" required
+                                            name="telefonoCliente001" onblur="verificarInput('titulo')" />
+                                        <label for="telefonoCliente001" class="styles_label_hleTI">Número de
+                                            telefono</label>
                                     </div>
                                     <div class="form-groupInput mb-3">
-                                        <input onfocus="initCountLeathersTextArea()" onclick="initCountLeathersTextArea()" type="text" placeholder=" "
-                                            class="gualazonF inputsNewService" id="emailCliente001"
-                                            value="" required
-                                            name="emailCliente001"
-                                            onblur="verificarInput('titulo')"/>
+                                        <input onfocus="initCountLeathersTextArea()"
+                                            onclick="initCountLeathersTextArea()" type="text" placeholder=" "
+                                            class="gualazonF" id="emailCliente001" value="" required
+                                            name="emailCliente001" onblur="verificarInput('titulo')" />
                                         <label for="emailCliente001" class="styles_label_hleTI">Email</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     {{-- info adicional --}}
-                    <div class="index_tabContainer_Ji5zT">
-                        <div style="font-weight: 800;" class="b-heading-xs b-my-4"> Cumpleaños </div>
-                        <div class="b-row b-mb-6">
-                            <div class="b-col b-col-6">
-                                <div class="form-groupInput mb-3">
-                                    <input onfocus="initCountLeathersTextArea()" onclick="initCountLeathersTextArea()" type="text" placeholder=" "
-                                        class="gualazonF inputsNewService" id="cumpleCliente001"
-                                        value="{{ old('nombreServicio') }}" required
-                                        name="cumpleCliente001"
-                                        onblur="verificarInput('titulo')"/>
-                                    <label for="cumpleCliente001" class="styles_label_hleTI">Fecha</label>
-                                </div>
-                            </div>
-                            <div class="main-box ubicacion-producto">
-                                <div style="font-weight: 800;" class="b-heading-xs b-my-4"> Dirección </div>
-                                <div class=" row tituloConMovimiento" >
-                                    <div class=" col">
-                                        <p class="title_flojo mt-2 mb-2">
-                                            Añadir dirección
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" role="img" class="b-text-secondary b-ml-3"><path fill="currentColor" fill-rule="evenodd" d="M12 2a.9.9 0 0 1 .9.9v8.2h8.2a.9.9 0 0 1 0 1.8h-8.2v8.2a.9.9 0 1 1-1.8 0v-8.2H2.9a.9.9 0 1 1 0-1.8h8.2V2.9A.9.9 0 0 1 12 2Z" clip-rule="evenodd"></path></svg>
-                                        </p>
+                    <div class="index_wrapper_X2m39 index_tabContainer_Ji5zT client_info_additional"
+                        id="client_info_additional" style="display: none">
+                        <div class="">
+                            <div style="font-weight: 800;" class="b-heading-xs b-my-4"> Cumpleaños </div>
+                            <div class="b-mb-6">
+                                <div class="b-col">
+                                    <div class="form-groupInput mb-3">
+                                        <input onfocus="initCountLeathersTextArea()"
+                                            onclick="initCountLeathersTextArea()" type="text" placeholder=" "
+                                            class="gualazonF" id="cumpleCliente001"
+                                            value="{{ old('nombreServicio') }}" required name="cumpleCliente001"
+                                            onblur="verificarInput('titulo')" />
+                                        <label for="cumpleCliente001" class="styles_label_hleTI">Fecha</label>
                                     </div>
                                 </div>
-                                <div id="searchMap"></div>
-                                <div id="map" style="">
+                                <div class="main-box ubicacion-producto">
+                                    <div style="font-weight: 800;" class="b-heading-xs b-my-4"> Dirección </div>
+                                    <div class=" row tituloConMovimiento">
+                                        <div class=" col">
+                                            <p class="title_flojo mt-2 mb-2">
+                                                Añadir dirección
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                    fill="none" viewBox="0 0 24 24" role="img"
+                                                    class="b-text-secondary b-ml-3">
+                                                    <path fill="currentColor" fill-rule="evenodd"
+                                                        d="M12 2a.9.9 0 0 1 .9.9v8.2h8.2a.9.9 0 0 1 0 1.8h-8.2v8.2a.9.9 0 1 1-1.8 0v-8.2H2.9a.9.9 0 1 1 0-1.8h8.2V2.9A.9.9 0 0 1 12 2Z"
+                                                        clip-rule="evenodd"></path>
+                                                </svg>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div id="searchMap"></div>
+                                    <div id="map" style="">
+                                    </div>
+                                </div>
+                                <div style="font-weight: 800;" class="b-heading-xs b-my-4"> Resto dirección, puerta,
+                                    piso ... (opcional) </div>
+                                <div class="b-mb-6">
+                                    <div class="b-col">
+                                        <div class="form-groupInput mb-3">
+                                            <input onfocus="initCountLeathersTextArea()"
+                                                onclick="initCountLeathersTextArea()" type="text" placeholder=" "
+                                                class="gualazonF" id="restoDireccionCliente001"
+                                                value="{{ old('nombreServicio') }}" required
+                                                name="restoDireccionCliente001" onblur="verificarInput('titulo')" />
+                                            <label for="restoDireccionCliente001" class="styles_label_hleTI">Resto
+                                                dirección</label>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
-                            <div class="b-col b-col-2">  </div>
                         </div>
+                    </div>
+                </div>
+
+                {{-- acuerdo de privacidad --}}
+                <div class="_tabContainer_ac6hy_30 client_info_privacy" id="client_info_privacy"
+                    style="display: none">
+                    <div class="_title_1hfe4_7">Acuerdos de privacidad</div>
+                    <ul>
+                        <li data-testid="false">
+                            <div class="_agreement_1hfe4_13">
+                                <label for="89checkbox_blacklisted"
+                                    class="b-input-choice_container_aoM6F b-input-choice_containertoggler--revert_I2Vvu">
+                                    <div class="position-relative">
+                                        <div class="switch2">
+                                            <label for="toggle-3" aria-label="Toggle Filter">
+                                                <input type="checkbox" id="toggle-3" data-on="SI" data-off="NO">
+                                            </label>
+                                            <span class="led"></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="b-input-choice_label_dgjUA b-input-choice_size--14_eTI26"
+                                        style="margin-right: 8px;">
+                                        <div class="index_inputChoiceTitle_vWBIW"> Consentimiento para recibir
+                                            ofertas de Forever Nails
+                                        </div>
+
+                                    </div>
+                                </label>
+                                <div class="_buttonWrapper_1hfe4_17">
+                                    <button
+                                        class="_button_vx3b8_7 _theme--secondary_vx3b8_34 _size--extra-small_vx3b8_122"
+                                        type="button" data-testid="show-agreement-detais" data-bs-toggle="modal"
+                                        data-bs-target="#modalConsentimientoRecibOfertas">Detalles</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- modal modalConsentimientoRecibOfertas --}}
+<div class="modal fade" id="modalConsentimientoRecibOfertas" data-bs-backdrop="static" data-bs-keyboard="false"
+    tabindex="-1" aria-labelledby="modalConsentimientoRecibOfertasLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <header class="_header_i3qpf_7">
+                    <div class="size--28-b ml-4">Consentimiento para recibir ofertas de Africa Nail art
+                        Studio</div>
+                </header>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div>
+
+                        <div class="_descriptionWrapper_i3qpf_12">
+                            <div class="modal__description size--14 color-07">Acepto recibir de Africa Nail art
+                                Studio, Praza
+                                Da Estacion, 70, 32001, Ourense información comercial relativa a los
+                                productos y servicios ofrecidos mediante comunicaciones electrónicas
+                                (incluyendo la dirección de correo electrónico que ha proporcionado),
+                                así como el uso de equipos de terminales de
+                                telecomunicación y sistemas de llamadas automáticas, incluyendo llamadas de voz y
+                                mensajes de texto, con fines de marketing.
+                            </div>
+                        </div>
+                        <div class="mt-6"><button class="_button_vx3b8_7 w-full" type="button"
+                                data-testid="close-agreement">Cerrar</button></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+{{-- Modal para seleccionar imagen --}}
+<div id="cropModal" class="crop-modal">
+    <header class="crop-confirm-btn">
+        <div class="flex-1" style="display: flex; align-items: center; gap: 10px;">
+            <button id="cropCloseBtn" class="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="32" viewBox="0 0 40 40"
+                    role="img" class="b-svg b-svg-name-x">
+                    <path fill="currentColor" fill-rule="evenodd"
+                        d="M10.596 8.646 20 18.05l9.404-9.404a1.379 1.379 0 0 1 1.95 1.95L21.949 20l9.405 9.404a1.379 1.379 0 0 1-1.95 1.95L20 21.949l-9.404 9.405a1.379 1.379 0 1 1-1.95-1.95L18.05 20l-9.404-9.404a1.379 1.379 0 1 1 1.95-1.95">
+                    </path>
+                </svg>
+            </button>
+            <h2 class="_title_1rpe1_51" style="margin-bottom: 0;">Añadir foto</h2>
+        </div>
+        <div class="_buttons_1rpe1_61">
+            <button id="cropConfirmBtn"
+                class="_button_15l74_7 _size--lg_15l74_23 _theme--default_15l74_39 _slotTheme--default_15l74_121 _submitButton_1k514_7"
+                data-testid="add-image">
+                <div class="_caption_15l74_19">Añadir</div>
+            </button>
+        </div>
+    </header>
+
+    {{-- <button id="cropConfirmBtn" class="crop-confirm-btn">Añadir</button> --}}
+
+    <!-- Imagen -->
+    <div class="crop-container">
+        <img id="imageToCrop">
+    </div>
+
+</div>
 </div>
