@@ -29,7 +29,7 @@ class CrearDescuentoUsuario
      public function handle(Registered $event)
     {
         Descuento::create([
-            'user_id' => $event->user->id,
+            'id_user' => $event->user->id,
             'porcentaje' => 'Sin descuento',
             'importe_descuento' => 0.00,
         ]);

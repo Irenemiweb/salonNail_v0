@@ -580,21 +580,7 @@ function showDivBotonGuardarInfo(selectedDivId) {
         document.querySelector(".saveChangesFooterInfo"),
         document.querySelector(".saveChangesFooterInfoReserv"),
     ];
-    // Recorrer todos los divs
-    divs.forEach((div) => {
-        // Verificar si el div existe antes de intentar acceder a sus propiedades
-        if (div) {
-            // Si el div coincide con el ID seleccionado, mostrarlo
-            if (div.id === selectedDivId) {
-                div.style.display = "flex";
-            } else {
-                // Ocultar todos los demás divs
-                div.style.display = "none";
-            }
-        } else {
-            console.warn("Div no encontrado, verifica los IDs en el DOM.");
-        }
-    });
+    openClosedDivs(divs, selectedDivId);
 }
 
 function showDivPagos(selectedDivId) {
@@ -604,28 +590,11 @@ function showDivPagos(selectedDivId) {
         document.getElementById("salesNavigator-indexBasketContent"),
         document.getElementById("index_checkoutView_pvF8_VistaPagos"),
     ];
-    // Recorrer todos los divs
-    divs.forEach((div) => {
-        // Verificar si el div existe antes de intentar acceder a sus propiedades
-        if (div) {
-            // Si el div coincide con el ID seleccionado, mostrarlo
-            if (div.id === selectedDivId) {
-                div.style.display = "block";
-            } else {
-                // Ocultar todos los demás divs
-                div.style.display = "none";
-            }
-        } else {
-            // console.warn('Div no encontrado, verifica los IDs en el DOM.');
-        }
-    });
+    openClosedDivs(divs, selectedDivId);
 }
 
 //MUESTRA EL DIV QUE ENVIAMOS Y CIERRA TODOS LOS DEMÁS
 function showDiv(selectedDivId) {
-    // console.log(selectedDivId);
-
-    // Crear un array con los divs que deseas controlar
     const divs = [
         document.getElementById("configuration_bussines"),
         document.getElementById("configuration_service"),
@@ -634,42 +603,23 @@ function showDiv(selectedDivId) {
         document.getElementById("opciones_avanzadas1"),
         document.getElementById("opciones_avanzadas2"),
         document.getElementById("opciones_avanzadas3"),
-        // document.querySelector('.citasProcimasContainer'),
-        // document.querySelector('.citasTerminadasContainer'),
-        // document.getElementById('salesNavigator-indexBasketContent'),
-        // document.getElementById('index_checkoutView_pvF8_VistaPagos'),
     ];
 
-    // Recorrer todos los divs
-    divs.forEach((div) => {
-        // Verificar si el div existe antes de intentar acceder a sus propiedades
-        if (div) {
-            // Si el div coincide con el ID seleccionado, mostrarlo
-            if (div.id === selectedDivId) {
-                div.style.display = "block";
-            } else {
-                // Ocultar todos los demás divs
-                div.style.display = "none";
-            }
-        } else {
-            console.warn("Div no encontrado, verifica los IDs en el DOM.");
-        }
-    });
+    openClosedDivs(divs, selectedDivId);
 }
 
 //MUESTRA EL DIV QUE ENVIAMOS Y CIERRA TODOS LOS DEMÁS
 function showDivClient(selectedDiv) {
-    // console.log(selectedDivId);
-
     // Crear un array con los divs que deseas controlar
     const divs = [
-        document.querySelector(".citasPasadas_001_cliente"),
-        document.querySelector(".citasProximas_001_cliente"),
         document.querySelector(".add_client_001"),
         document.querySelector(".no_clients_001"),
         document.querySelector(".client_info_001"),
     ];
+    openClosedDivs(divs, selectedDiv);
+}
 
+function openClosedDivs(divs, selectedDiv) {
     // Recorrer todos los divs
     divs.forEach((div) => {
         // Verificar si el div existe antes de intentar acceder a sus propiedades
@@ -686,6 +636,7 @@ function showDivClient(selectedDiv) {
         }
     });
 }
+
 //muestra pantalla info cliente o infoAdicional
 function showDivClientInfo(selectedDiv) {
     // console.log(selectedDivId);
@@ -699,49 +650,17 @@ function showDivClientInfo(selectedDiv) {
         document.querySelector(".client_info_privacy"),
         // document.querySelector(".client_info_001"),
     ];
-
-    // Recorrer todos los divs
-    divs.forEach((div) => {
-        // Verificar si el div existe antes de intentar acceder a sus propiedades
-        if (div) {
-            // Si el div coincide con el ID seleccionado, mostrarlo
-            if (div.id === selectedDiv) {
-                div.style.display = "block";
-            } else {
-                // Ocultar todos los demás divs
-                div.style.display = "none";
-            }
-        } else {
-            console.warn("Div no encontrado, verifica los IDs en el DOM.");
-        }
-    });
+    openClosedDivs(divs, selectedDiv);
 }
 
 function showDivCitaSinFinalizarTasas(selectedDiv) {
-    // console.log(selectedDivId);
-
     // Crear un array con los divs que deseas controlar
     const divs = [
         document.querySelector(".booking-notPay_end_all33"),
         document.querySelector(".booking-notPay_activas_all33"),
         // document.querySelector('.li-tasas262'),
     ];
-
-    // Recorrer todos los divs
-    divs.forEach((div) => {
-        // Verificar si el div existe antes de intentar acceder a sus propiedades
-        if (div) {
-            // Si el div coincide con el ID seleccionado, mostrarlo
-            if (div.id === selectedDiv) {
-                div.style.display = "block";
-            } else {
-                // Ocultar todos los demás divs
-                div.style.display = "none";
-            }
-        } else {
-            console.warn("Div no encontrado, verifica los IDs en el DOM.");
-        }
-    });
+    openClosedDivs(divs, selectedDiv);
 }
 
 function showDivNotas(selectedDiv) {
@@ -751,22 +670,7 @@ function showDivNotas(selectedDiv) {
         document.querySelector(".datos_reservaNewReserv0106"),
         document.querySelector(".notas_reservaNewReserv0106"),
     ];
-
-    // Recorrer todos los divs
-    divs.forEach((div) => {
-        // Verificar si el div existe antes de intentar acceder a sus propiedades
-        if (div) {
-            // Si el div coincide con el ID seleccionado, mostrarlo
-            if (div.id === selectedDiv) {
-                div.style.display = "block";
-            } else {
-                // Ocultar todos los demás divs
-                div.style.display = "none";
-            }
-        } else {
-            console.warn("Div no encontrado, verifica los IDs en el DOM.");
-        }
-    });
+    openClosedDivs(divs, selectedDiv);
 }
 
 function showDivClienInfo(selectedDiv) {
@@ -774,20 +678,7 @@ function showDivClienInfo(selectedDiv) {
         document.querySelector(".basket-customer-card0101Info"),
         document.querySelector(".clienteDetails"),
     ];
-    divs.forEach((div) => {
-        // Verificar si el div existe antes de intentar acceder a sus propiedades
-        if (div) {
-            // Si el div coincide con el ID seleccionado, mostrarlo
-            if (div.id === selectedDiv) {
-                div.style.display = "block";
-            } else {
-                // Ocultar todos los demás divs
-                div.style.display = "none";
-            }
-        } else {
-            console.warn("Div no encontrado, verifica los IDs en el DOM.");
-        }
-    });
+    openClosedDivs(divs, selectedDiv);
 }
 //cambiar ruta si salonNail.com
 function cambiarURLDesdeRaiz(nuevaRuta) {

@@ -9166,12 +9166,21 @@ pestaniaProximaPasada.forEach(function (pestania) {
         pestania.setAttribute("data-testid", "active");
         pestania.setAttribute("tabindex", "0");
         if (pestania.classList.contains("li_proxima_cliente")) {
-            showDivClient("citasProximas_001_cliente");
+            showDivCitasProxiPasadas("citasProximas_001_cliente");
         } else {
-            showDivClient("citasPasadas_001_cliente");
+            showDivCitasProxiPasadas("citasPasadas_001_cliente");
         }
     });
 });
+
+function showDivCitasProxiPasadas(selectedDiv) {
+    // Crear un array con los divs que deseas controlar
+    const divs = [
+        document.querySelector(".citasPasadas_001_cliente"),
+        document.querySelector(".citasProximas_001_cliente"),
+    ];
+    openClosedDivs(divs, selectedDiv);
+}
 
 function getFristClient(idCliente) {
     // setTimeout(() => {
@@ -12888,21 +12897,7 @@ function showDivVentaRapida(selectedDivId) {
         document.querySelector(".index_sales_X5DVI"),
         document.querySelector(".showTransactionVentaRapida"),
     ];
-    // Recorrer todos los divs
-    divs.forEach((div) => {
-        // Verificar si el div existe antes de intentar acceder a sus propiedades
-        if (div) {
-            // Si el div coincide con el ID seleccionado, mostrarlo
-            if (div.id === selectedDivId) {
-                div.style.display = "block";
-            } else {
-                // Ocultar todos los demás divs
-                div.style.display = "none";
-            }
-        } else {
-            // console.warn('Div no encontrado, verifica los IDs en el DOM.');
-        }
-    });
+    openClosedDivs(divs, selectedDivId);
 }
 function showDivPestaniasLateralesVentaRapida(selectedDivId) {
     const divs = [
@@ -12913,23 +12908,7 @@ function showDivPestaniasLateralesVentaRapida(selectedDivId) {
             ".divContenedorVentaRapida.basket-menu-appointments",
         ),
     ];
-    // Recorrer todos los divs
-    divs.forEach((div) => {
-        // Verificar si el div existe antes de intentar acceder a sus propiedades
-        if (div) {
-            // Si el div coincide con el ID seleccionado, mostrarlo
-            if (div.id === selectedDivId) {
-                div.classList.remove("d-none");
-                // div.style.display = 'block';
-            } else {
-                div.classList.add("d-none");
-                // Ocultar todos los demás divs
-                // div.style.display = 'none';
-            }
-        } else {
-            // console.warn('Div no encontrado, verifica los IDs en el DOM.');
-        }
-    });
+    openClosedDivs(divs, selectedDivId);
 }
 
 //función para flecha atrás muestra vista inicial venta rápida
@@ -16914,18 +16893,6 @@ function openGeneralInfoCreateCliente() {
 
 //abre pestaña info clientes
 function openTabClientsInfo() {
-    // const divs = [
-    //     document.querySelector(".client_info_additional"),
-    //     document.querySelector(".client_info_general"),
-    //     document.querySelector(".client_info_privacy"),
-    // ];
-    //  divs.forEach((div) => {
-    //     // Verificar si el div existe antes de intentar acceder a sus propiedades
-    //     if (div) {
-    //         // Ocultar todos los demás divs
-    //         div.style.display = "none";
-    //     }
-    // });
     const closedDiv = document.querySelector(".add_client_001");
     closedDiv.style.display = "none";
     const openDiv = document.querySelector(".client_info_001");
