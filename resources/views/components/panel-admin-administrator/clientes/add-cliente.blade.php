@@ -239,6 +239,52 @@
                                     </div>
 
                                 </div>
+                                {{-- datos Empresa --}}
+                                <div style="font-weight: 800;" class="b-heading-xs b-my-4">Empresa</div>
+                                {{-- Si hay datos de empresa --}}
+                                <div class="add-info-company-client">
+                                    <div class="_box_epq43_7 _addressPicked_epq43_31" data-testid="company-14278">
+                                        <div class="_addressInfo_epq43_36">
+                                            <div class="_addressInfoData_epq43_50">
+                                                <p>Nombre Empresa</p>
+                                                <p>NIF: 89562364</p>
+                                                <p>calle palotes 33, 5-1, o barco valdeorras, 15190, A coruña, ES</p>
+                                            </div>
+                                        </div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 40 40" role="img" class="b-svg b-svg-name-edit">
+                                            <path fill="currentColor"
+                                                d="M26.207 5.36a4.64 4.64 0 0 1 6.389-.165l.173.164 1.872 1.872a4.64 4.64 0 0 1 .164 6.389l-.164.173-19.58 19.58a1 1 0 0 1-.186.145l-.102.052a1 1 0 0 1-.15.051L6.122 35.94c-1.208.329-2.32-.728-2.092-1.928l.03-.134 2.328-8.534.039-.108a1 1 0 0 1 .15-.242l.05-.054zM7.773 27.415 5.969 34.03l6.613-1.804zM25.644 8.584 8.623 25.605l5.771 5.771 17.021-17.021zm5.794-1.894a2.757 2.757 0 0 0-3.762-.129l-.138.13-.563.562 5.771 5.771.564-.562a2.76 2.76 0 0 0 .242-3.623l-.118-.145-.124-.132z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                {{-- ----------- --}}
+                                <div>
+                                    <div class="_box_epq43_7" data-testid="add-company" data-bs-toggle="modal"
+                                        data-bs-target="#modalDatosEmpresa">
+                                        <div class="_boxText_epq43_20">Añadir detalles de la empresa</div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="14"
+                                            viewBox="0 0 20 20" role="img"
+                                            class="b-svg b-svg-name-plus _boxIcon_epq43_26">
+                                            <path fill="currentColor" fill-rule="evenodd"
+                                                d="M19 9.4h-8.4V1a.6.6 0 1 0-1.2 0v8.4H1a.6.6 0 1 0 0 1.2h8.4V19a.6.6 0 1 0 1.2 0v-8.4H19a.6.6 0 1 0 0-1.2">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                {{-- añadir detalles empresa pequeño cuando hay datos empresa añadidos --}}
+                                <div>
+                                    <div class="_box_epq43_7 _boxSmall_epq43_17" data-testid="add-company">
+                                        <div class="_boxText_epq43_20">Añadir detalles de la empresa</div><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="14"
+                                            viewBox="0 0 20 20" role="img"
+                                            class="b-svg b-svg-name-plus _boxIcon_epq43_26">
+                                            <path fill="currentColor" fill-rule="evenodd"
+                                                d="M19 9.4h-8.4V1a.6.6 0 1 0-1.2 0v8.4H1a.6.6 0 1 0 0 1.2h8.4V19a.6.6 0 1 0 1.2 0v-8.4H19a.6.6 0 1 0 0-1.2">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -349,5 +395,205 @@
         <img id="imageToCrop">
     </div>
 
+</div>
+{{-- modal datos de empresa --}}
+<div class="modal fade" id="modalDatosEmpresa" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="modalDatosEmpresaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <header class="_header_i3qpf_7">
+                    <div class="size--28-b ml-4">Detalles de la empresa</div>
+                </header>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div>
+
+                        <div class="_descriptionWrapper_i3qpf_12">
+                            <div class="modal__description size--14 color-07">
+                                <div class="b-col">
+                                    <div class="form-groupInput mb-3">
+                                        <input onfocus="initCountLeathersTextArea()"
+                                            onclick="initCountLeathersTextArea()" type="text" placeholder=" "
+                                            class="gualazonF flatpickr-input" id="nombreEmpresaCliente001"
+                                            value="" required="" name="nombreEmpresaCliente001"
+                                            onblur="verificarInput('titulo')">
+                                        <label for="nombreEmpresaCliente001" class="styles_label_hleTI">Nombre de la
+                                            empresa</label>
+                                        <small class="error-text" id="error-nombreEmpresaCliente001"></small>
+                                    </div>
+                                </div>
+                                <div class="b-col">
+                                    <div class="form-groupInput mb-3">
+                                        <input onfocus="initCountLeathersTextArea()"
+                                            onclick="initCountLeathersTextArea()" type="text" placeholder=" "
+                                            class="gualazonF flatpickr-input" id="nifEmpresaCliente001"
+                                            value="" required="" name="nifEmpresaCliente001"
+                                            onblur="verificarInput('titulo')">
+                                        <label for="nifEmpresaCliente001" class="styles_label_hleTI">NIF</label>
+                                    </div>
+                                </div>
+                                <div class="b-col">
+                                    <div class="form-groupInput mb-3">
+                                        <input onfocus="initCountLeathersTextArea()"
+                                            onclick="initCountLeathersTextArea()" type="text" placeholder=" "
+                                            class="gualazonF flatpickr-input" id="direccionEmpresaCliente001"
+                                            value="" required="" name="direccionEmpresaCliente001"
+                                            onblur="verificarInput('titulo')">
+                                        <label for="direccionEmpresaCliente001"
+                                            class="styles_label_hleTI">Dirección</label>
+                                        <small class="error-text" id="error-direccionEmpresaCliente001"></small>
+                                    </div>
+                                </div>
+                                {{-- ciudad, estado --}}
+                                <div class="row">
+                                    <div class="col col-6"
+                                        style="padding: 0px !important;padding-right: 0.5rem !important;">
+                                        <div class="relative _container_nq4h9_7 _error_mbwu1_7"
+                                            data-testid="error-input">
+                                            <div class="b-my-2 mx-0.5">
+                                                <div data-testid="city" class="b-form-field">
+                                                    <div class="form-groupInput mb-3">
+                                                        <input type="text" placeholder=" "
+                                                            class="gualazonF flatpickr-input"
+                                                            id="ciudadEmpresaCliente001" value=""
+                                                            required="" name="ciudadEmpresaCliente001">
+                                                        <label for="ciudadEmpresaCliente001"
+                                                            class="styles_label_hleTI">Ciudad</label>
+                                                        <small class="error-text"
+                                                            id="error-ciudadEmpresaCliente001"></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-6" style="padding: 0px !important;">
+                                        <div class="b-my-2 mx-0.5">
+                                            <div data-testid="state" class="b-form-field">
+                                                <div class="form-groupInput mb-3">
+                                                    <input type="text" placeholder=" "
+                                                        class="gualazonF flatpickr-input" id="estadoEmpresaCliente001"
+                                                        value="" required="" name="estadoEmpresaCliente001">
+                                                    <label for="estadoEmpresaCliente001"
+                                                        class="styles_label_hleTI">Estado</label>
+                                                    {{-- <small class="error-text" id="error-estadoEmpresaCliente001"></small> --}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- codigo postal, pais --}}
+                                <div class="row">
+                                    <div class="col col-6"
+                                        style="padding: 0px !important;padding-right: 0.5rem !important;">
+                                        <div class="relative _container_nq4h9_7 _error_mbwu1_7"
+                                            data-testid="error-input">
+                                            <div class="b-my-2 mx-0.5">
+                                                <div data-testid="city" class="b-form-field">
+                                                    <div class="form-groupInput mb-3">
+                                                        <input type="text" placeholder=" "
+                                                            class="gualazonF flatpickr-input"
+                                                            id="codigoPostalEmpresaCliente001" value=""
+                                                            required="" name="codigoPostalEmpresaCliente001">
+                                                        <label for="codigoPostalEmpresaCliente001"
+                                                            class="styles_label_hleTI">Código Postal</label>
+                                                        <small class="error-text"
+                                                            id="error-codigoPostalEmpresaCliente001"></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-6" style="padding: 0px !important;">
+                                        <div
+                                            class="index_dropdown_yxIjB index_has--shadow_s6YH1 index_is--overlay_JG_3k b-select-duration_select_f9p18">
+                                            <div class="index_toggle_sBt35">
+                                                <div data-testid="select-dropdown-">
+                                                    <div class="styles_container_pjyTj styles_focusedOrFilled_dNjQS styles_size--md_sPOha styles_theme--default_x92vh styles_slotTheme--blank_iI8Uf styles_slotTheme--default_vYr1T"
+                                                        data-testid="select-input-">
+                                                        <div onclick="abrirModalCategorias('.contenedorPaises');"
+                                                            class="styles_outerWrapper_NumuG" style="min-width: 0px;">
+                                                            <div class="styles_labelWrapper_isbmo">
+                                                                <label class="styles_label_hleTI">Pais </label>
+                                                            </div>
+                                                            <div class="styles_wrapper_hb1CA justify-content-between">
+                                                                <div class=" inputsNewService">
+                                                                    España
+                                                                </div>
+                                                                <div class="styles_slotRight_TkOzM">
+                                                                    <i class="index_toggleIcon_EqQez"></i>
+                                                                </div>
+                                                            </div>
+                                                            <input hidden name="countryEmpresaCliente" value="España"
+                                                                placeholder="" id="paisEmpresaCliente001"
+                                                                type="" autocomplete="off" inputmode="text"
+                                                                class="styles_field_Bhxvq"
+                                                                style="min-width: 0px; text-transform: none;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- desplegable paises --}}
+                                            <div class="contenedorPaises index_content_Z_JCn _position_1ului_17 _position--top-left_1ului_56"
+                                                style="display: none;">
+                                                <div class="scrollable index_scrollable_qm3Zl index_scrollable_BtJqS"
+                                                    style="max-height: 150px;">
+                                                    <ul class="list" style="padding-left: 0px!important">
+                                                        @foreach ($paises as $pais)
+                                                            <li>
+                                                                @if ($pais->nombre == 'España')
+                                                                    <div data-country="{{ $pais->nombre }}"
+                                                                        class="index_defaultItem_pKlHs index_defaultItemLast_G_jYj index_--selected_oUDGp index_--highlighted__3J43">
+                                                                        <div class="index_defaultItemInner_HCCY6">
+                                                                            {{ $pais->nombre }}
+                                                                        </div>
+                                                                    </div>
+                                                                @else
+                                                                    <div data-country="{{ $pais->nombre }}"
+                                                                        class="index_defaultItem_pKlHs index_defaultItemLast_G_jYj">
+                                                                        <div class="index_defaultItemInner_HCCY6">
+                                                                            {{ $pais->nombre }}
+                                                                        </div>
+                                                                    </div>
+                                                                @endif
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        {{-- <div class="b-my-2 mx-0.5">
+                                            <div data-testid="state" class="b-form-field">
+                                                <div class="form-groupInput mb-3">
+                                                    <input type="text" placeholder=" "
+                                                        class="gualazonF flatpickr-input" id="paisEmpresaCliente001"
+                                                        value="" required="" name="paisEmpresaCliente001">
+                                                    <label for="paisEmpresaCliente001"
+                                                        class="styles_label_hleTI">País</label>
+                                                </div>
+                                            </div>
+                                        </div> --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <div class="d-flex flex-column flex-sm-row gap-2" style="justify-content: space-around;">
+                                <button style="padding: 1rem 20px;" type="button"
+                                    class="add-infoEmpresa-button b-mr-4 b-button_button_QiVJW b-button_theme--secondary_Nu5MN"
+                                    data-testid="add-customer">Guardar</button>
+                                <button style="padding: 1rem 20px;" type="button"
+                                    class="cancel-infoEmpresa-button b-button_button_QiVJW"
+                                    data-testid="add-and-invite-customer">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </div>

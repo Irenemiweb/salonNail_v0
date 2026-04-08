@@ -3,6 +3,7 @@
 namespace App\View\Components\PanelAdminAdministrator\Clientes;
 
 use Illuminate\View\Component;
+use App\Models\Pais;
 
 class AddCliente extends Component
 {
@@ -22,7 +23,11 @@ class AddCliente extends Component
      * @return \Illuminate\Contracts\View\View|\Closure|string
      */
     public function render()
-    {
-        return view('components.panel-admin-administrator.clientes.add-cliente');
-    }
+{
+    $paises = \App\Models\Pais::orderBy('nombre', 'asc')->get();
+
+    return view('components.panel-admin-administrator.clientes.add-cliente', [
+        'paises' => $paises
+    ]);
+}
 }

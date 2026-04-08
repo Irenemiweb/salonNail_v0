@@ -1454,6 +1454,7 @@ function montarOffcanvasLateralTodaInfo(info, id_multipleCalendar = null) {
         //función para hacer scroll hora inicio y fin activas
         function intentarScroll(contenedor) {
             if (!contenedor) return;
+            console.log("intentar scroll");
 
             const liActivo = contenedor.querySelector(
                 ".index_--highlighted__3J43",
@@ -17129,6 +17130,132 @@ if (closeBtn) {
         }
 
         input.value = ""; // 🔥 limpiar input
+    });
+}
+/**
+ * VALIDAR DATOS EMPRESA NUEVO CLIENTE
+ */
+const datos = {
+    nombre: "#nombreEmpresaCliente001",
+    direccion: "#direccionEmpresaCliente001",
+    ciudad: "#ciudadEmpresaCliente001",
+    codigoPostal: "#codigoPostalEmpresaCliente001",
+};
+
+function validarFormulario() {
+    let valido = true;
+    // Limpiar errores primero
+    Object.values(datos).forEach((id) => limpiarError(id));
+
+    // Validaciones
+    if (!document.querySelector(datos.nombre).value.trim()) {
+        mostrarError(datos.nombre, "El nombre es obligatorio");
+        valido = false;
+    }
+
+    if (!document.querySelector(datos.direccion).value.trim()) {
+        mostrarError(datos.direccion, "La dirección es obligatoria");
+        valido = false;
+    }
+
+    if (!document.querySelector(datos.ciudad).value.trim()) {
+        mostrarError(datos.ciudad, "La ciudad es obligatoria");
+        valido = false;
+    }
+
+    // if (!document.querySelector(datos.estado).value.trim()) {
+    //     mostrarError(datos.estado, "El estado es obligatorio");
+    //     valido = false;
+    // }
+
+    if (!document.querySelector(datos.codigoPostal).value.trim()) {
+        mostrarError(datos.codigoPostal, "El código postal es obligatorio");
+        valido = false;
+    }
+
+    return valido;
+}
+
+function validarCampo(id, nombreCampo) {
+    const input = document.querySelector(id);
+    const valor = input.value.trim();
+
+    if (!valor) {
+        mostrarError(id, `El campo ${nombreCampo} es obligatorio`);
+        return false;
+    }
+
+    if (id === "#codigoPostalEmpresaCliente001" && !/^\d{5}$/.test(valor)) {
+        mostrarError(id, "El código postal debe tener 5 dígitos");
+        return false;
+    }
+
+    limpiarError(id);
+    return true;
+}
+
+Object.entries(datos).forEach(([campo, selector]) => {
+    const input = document.querySelector(selector);
+
+    let tocado = false;
+
+    // Cuando el usuario sale del campo
+    input.addEventListener("blur", () => {
+        tocado = true;
+        validarCampo(selector, campo);
+    });
+
+    // Mientras escribe (solo si ya lo tocó antes)
+    input.addEventListener("input", () => {
+        if (tocado) {
+            validarCampo(selector, campo);
+        }
+    });
+});
+
+function mostrarError(idInput, mensaje) {
+    const input = document.querySelector(idInput);
+    const error = document.querySelector(`#error-${input.id}`);
+
+    input.classList.add("input-error");
+    error.textContent = mensaje;
+}
+
+function limpiarError(idInput) {
+    console.log(idInput, "limpiar error");
+
+    const input = document.querySelector(idInput);
+    const error = document.querySelector(`#error-${input.id}`);
+
+    input.classList.remove("input-error");
+    error.textContent = "";
+}
+
+/**
+ * AÑADIMOS DATOS EMPRESA NUEVO CLIENTE
+ */
+const addInfoEmpresaBtn = document.querySelector(".add-infoEmpresa-button");
+
+if (addInfoEmpresaBtn) {
+    addInfoEmpresaBtn.addEventListener("click", (e) => {
+        // Ejecutar validación
+        const esValido = validarFormulario();
+
+        if (!esValido) {
+            e.preventDefault(); // evita envío si es botón submit
+            console.log("Formulario con errores ❌");
+            return;
+        }
+
+        // Si todo está OK
+        console.log("Formulario válido ✅");
+
+        // Aquí puedes:
+        // 1. Enviar formulario
+        // document.querySelector("form").submit();
+
+        // 2. O hacer AJAX
+        // enviarDatos(datos);
     });
 }
 

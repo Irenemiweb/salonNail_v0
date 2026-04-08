@@ -3398,6 +3398,31 @@ function comprobarDesplegableEmpleadoAbierto(className) {
     return style.display === "none";
 }
 
+//función para hacer scroll hora inicio y fin activas
+function intentarScroll2(contenedor) {
+    if (!contenedor) return;
+    console.log("intentar scroll");
+
+    const liActivo = contenedor.querySelector(".index_--highlighted__3J43");
+    if (!liActivo) return;
+
+    const rect = contenedor.getBoundingClientRect();
+
+    // Esperar a que sea visible (offcanvas / modal)
+    if (rect.height === 0) {
+        requestAnimationFrame(() => intentarScroll2(contenedor));
+        return;
+    }
+
+    const offset =
+        liActivo.offsetTop -
+        contenedor.offsetTop -
+        contenedor.clientHeight / 2 +
+        liActivo.clientHeight / 2;
+
+    contenedor.scrollTop = offset;
+}
+
 function abrirModalCategorias(contenedor) {
     //para cerrar el modal empleados al clicar en las horas
     if (
@@ -3435,6 +3460,12 @@ function abrirModalCategorias(contenedor) {
         !comprobarDesplegableEmpleadoAbierto("contenedorEmpleados")
             ? $(".contenedorEmpleados").slideToggle()
             : null;
+    }
+    if (contenedor.trim() == ".contenedorPaises") {
+        const contenedor3 = document.querySelector(
+            ".contenedorPaises .scrollable",
+        );
+        intentarScroll2(contenedor3);
     }
     //--------------------
     $(contenedor).slideToggle();
