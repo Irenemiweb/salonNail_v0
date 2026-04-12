@@ -1,5 +1,5 @@
 <div style="height: 100%">
-    <div class="index_customers_H5TNm client_info_001" id="client_info_001">
+    <div class="index_customers_H5TNm client_info_001" id="client_info_001" style="">
         <div class="list_customersBase_UGu3X">
             {{-- columna izquierda --}}
             <div class="list_customersListing_DPLnr" style="">
@@ -10,10 +10,32 @@
                         <div class="index_dropdown_yxIjB index_has--shadow_s6YH1 index_is--overlay_JG_3k">
                             <div class="index_toggle_sBt35">
                                 <button id="uid-119-input"
+                                    onclick="abrirModalCategorias('.contenedorImportSendMesageClient')"
                                     class="index_button_TfmOz index_size--sm_z95WM index_theme--default_AtMGF index_slotTheme--default_pktIt list_moreBtn_RvXet"
                                     data-testid="list-more-btn">
                                     <div class="index_caption_W6r_J"> Más </div>
                                 </button>
+                            </div>
+                            {{-- desplegable boton mas --}}
+                            <div id="contenedorImportSendMesageClient"
+                                style="display: none; top: calc(100% + 12px);left: -11rem;"
+                                class="contenedorImportSendMesageClient index_content_Z_JCn index_position_FV9jY _position--bottom-right_1ului_34">
+                                <div class="scrollable index_scrollable_qm3Zl index_scrollable_BtJqS">
+                                    <ul class="list" style="padding: 0px;margin: 0px;">
+                                        <li data-testid="dropdown-option-false">
+                                            <div data-option="ImportClient" class="index_defaultItem_pKlHs">
+                                                <div class="index_defaultItemInner_HCCY6">Importar clientes</div>
+                                            </div>
+                                        </li>
+                                        <li data-testid="dropdown-option-true">
+                                            <div data-option="SendMesageClient" style="border: none"
+                                                class="index_defaultItem_pKlHs index_defaultItemLast_G_jYj">
+                                                <div class="index_defaultItemInner_HCCY6">Enviar mensaje a los clientes
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -134,15 +156,15 @@
                                     </span>
                                     <div class="contact-button_label_Sb6C8"> Invitar </div>
                                 </button>
-                                <a style="text-decoration: none;" class="contact-button_button_CZz5m col" tabindex="-1"
-                                    href="mailto:julia@gmail.com">
+                                <a style="text-decoration: none;" class="contact-button_button_CZz5m col"
+                                    tabindex="-1" href="mailto:julia@gmail.com">
                                     <span class="contact-button_circle_l0Wdn">
                                         <span class="b-icon iconFont icon-mail" style="font-size: 20px;"></span>
                                     </span>
                                     <div class="contact-button_label_Sb6C8"> Email </div>
                                 </a>
-                                <a style="text-decoration: none;" class="contact-button_button_CZz5m col" tabindex="-1"
-                                    href="tel:652-41-15-69">
+                                <a style="text-decoration: none;" class="contact-button_button_CZz5m col"
+                                    tabindex="-1" href="tel:652-41-15-69">
                                     <span class="contact-button_circle_l0Wdn">
                                         <span class="b-icon iconFont icon-telephone" style="font-size: 18px;"></span>
                                     </span>
@@ -453,7 +475,14 @@
         <x-panel-admin-administrator.clientes.add-cliente />
     </div>
     {{-- NO HAY CLIENTES --}}
-    <div class="no_clients_001" id="no_clients_001" style="display:none;">
+    <div class="no_clients_001" id="no_clients_001" style="width:100%;height: 100%;display:none;">
         <x-panel-admin-administrator.clientes.vacio />
+    </div>
+    {{-- EXPORTAR CLIENTES --}}
+    <div class="export_clients_001" id="export_clients_001" style="display:none;">
+        <x-panel-admin-administrator.clientes.import-contacts />
+    </div>
+    <div class="export_clients_button_001" id="export_clients_button_001" style="display:none;">
+        <x-panel-admin-administrator.clientes.export-contacts-button />
     </div>
 </div>

@@ -1875,7 +1875,7 @@ function montarOffcanvasLateralTodaInfo(info, id_multipleCalendar = null) {
                                 );
                             tarjetasServiciosMultiples.forEach(
                                 (tarjeta, index) => {
-                                    boton =
+                                    let boton =
                                         tarjeta.querySelector(
                                             ".buttonEditEvent",
                                         );
@@ -4188,7 +4188,7 @@ if (buttonModifyReserv) {
                     ".subbookings-list_card_j4UGY",
                 );
                 tarjetasServiciosMultiples.forEach((tarjeta, index) => {
-                    boton = tarjeta.querySelector(".buttonEditEvent");
+                    let boton = tarjeta.querySelector(".buttonEditEvent");
                     boton.setAttribute(
                         "data-index",
                         eventIdChangeCalendarArray[index],
@@ -16896,6 +16896,10 @@ function openGeneralInfoCreateCliente() {
 function openTabClientsInfo() {
     const closedDiv = document.querySelector(".add_client_001");
     closedDiv.style.display = "none";
+    const closedDiv2 = document.querySelector(".export_clients_001");
+    closedDiv2.style.display = "none";
+    const closedDiv3 = document.querySelector(".export_clients_button_001");
+    closedDiv3.style.display = "none";
     const openDiv = document.querySelector(".client_info_001");
     openDiv.style.display = "block";
 }
@@ -17163,11 +17167,6 @@ function validarFormulario() {
         valido = false;
     }
 
-    // if (!document.querySelector(datos.estado).value.trim()) {
-    //     mostrarError(datos.estado, "El estado es obligatorio");
-    //     valido = false;
-    // }
-
     if (!document.querySelector(datos.codigoPostal).value.trim()) {
         mostrarError(datos.codigoPostal, "El código postal es obligatorio");
         valido = false;
@@ -17259,9 +17258,361 @@ if (addInfoEmpresaBtn) {
     });
 }
 
+/**
+ * ABRIR VISTA IMPORTAR CLIENTES
+ */
+const botones_importar = document.querySelectorAll(
+    '[data-testid="import-clients-button"]',
+);
+
+botones_importar.forEach((boton) => {
+    boton.addEventListener("click", () => {
+        console.log("Botón Importar clientes clicado");
+        showDivExportClients("export_clients_001");
+    });
+});
+
+//vuelve a al vista no hay clientes desde importar clientes flecha atras
+const boton_atras_importar = document.querySelector(
+    '[data-testid="exit_export_contacts"]',
+);
+if (boton_atras_importar) {
+    boton_atras_importar.addEventListener("click", () => {
+        if (boton_atras_importar.classList.contains("emptyClients")) {
+            // console.log("No hay clientes (emptyClients)");
+            // lógica cuando está vacío
+            showDivExportClients("no_clients_001");
+        } else {
+            // console.log("Hay clientes");
+            // lógica normal
+            showDivExportClients("client_info_001");
+        }
+    });
+}
+
+// //abre vista importar clientes desde boton
+// if (boton_importar) {
+//     boton_importar.addEventListener("click", () => {
+//         console.log("Botón Importar clientes clicado");
+//         showDivExportClients("export_clients_001");
+//     });
+// }
+
+//Muestra vista importar clientes código qr
+function showDivExportClients(selectedDiv) {
+    // Crear un array con los divs que deseas controlar
+    const divs = [
+        document.querySelector(".client_info_001"),
+        document.querySelector(".add_client_001"),
+        document.querySelector(".export_clients_001"),
+        document.querySelector(".no_clients_001"),
+    ];
+    openClosedDivs(divs, selectedDiv);
+}
+//Muestra vistas de las pestañas de invitar, importar etc
+function showDivTabsExportView(selectedDiv) {
+    // Crear un array con los divs que deseas controlar
+    const divs = [
+        document.querySelector(".import_and_invite"),
+        document.querySelector(".invite_to_book"),
+        document.querySelector(".quick_invite"),
+    ];
+    openClosedDivs(divs, selectedDiv);
+}
+
+//Cuando clicamos en las opciones del desplegable del boton más
+const contenedorImportSentMesageClient = document.getElementById(
+    "contenedorImportSendMesageClient",
+);
+
+contenedorImportSentMesageClient.addEventListener("click", (e) => {
+    const li = e.target.closest("li");
+
+    if (!li) return;
+
+    const div = li.querySelector("[data-option]");
+    const opcion = div?.dataset.option;
+
+    console.log(opcion);
+
+    if (opcion === "ImportClient") {
+        // 👉 acción 1
+        console.log("invitar a reservar clientes");
+        showDivExportClients("export_clients_001");
+        activarTab("invite_to_book");
+    } else {
+        // 👉 acción 2
+        console.log("Enviar mensaje a clientes");
+        // ejemplo:
+        // abrirModalEnviarMensajes();
+    }
+});
+
+//activa la pestaña de la vista importar clientes
+function activarTab(testId) {
+    const tabs = document.querySelectorAll("ul._tabs_pvhha_43 li");
+
+    tabs.forEach((tab) => {
+        // quitar clase activa de todos
+        tab.classList.remove("_tabDefaultActive_pvhha_78");
+
+        // activar el tab que coincide
+        if (tab.dataset.testid === testId) {
+            tab.classList.add("_tabDefaultActive_pvhha_78");
+        }
+    });
+}
+
+//maneja el clic en las pestañas de la vista importar e invitar a clientes
+const tabsImportSentMesageClient =
+    document.querySelectorAll("._tabs_pvhha_43 li");
+if (tabsImportSentMesageClient) {
+    tabsImportSentMesageClient.forEach((tab) => {
+        tab.addEventListener("click", function () {
+            // // Quitar clase activa a todos
+            // tabs.forEach((t) =>
+            //     t.classList.remove("_tabDefaultActive_pvhha_78"),
+            // );
+
+            // // Añadir clase activa al clicado
+            // this.classList.add("_tabDefaultActive_pvhha_78");
+
+            // (Opcional) manejar contenido según data-testid
+            const type = this.getAttribute("data-testid");
+            activarTab(type);
+            // console.log(type);
+            // Ejemplo de control de vistas
+            // const importDiv = document.querySelector("._importFromXlsx_nqvuz_7");
+            showDivTabsExportView(type);
+            // if (type === "import_and_invite") {
+            //     // importDiv.style.display = "block";
+            // } else {
+            //     // importDiv.style.display = "none";
+            // }
+
+            // Aquí puedes añadir más lógica para otros tabs
+            console.log("Tab activo:", type);
+        });
+    });
+}
+
+//buscador input clientes invitar
+const searchInput = document.querySelector('input[name="search"]');
+const clientesList = document.querySelectorAll(
+    'ul[data-testid="invite-customers-list"] li',
+);
+
+if (searchInput) {
+    searchInput.addEventListener("input", function () {
+        const query = this.value.toLowerCase().trim();
+
+        clientesList.forEach((li) => {
+            const nameElement = li.querySelector(
+                '[data-testid="customer-item-name"]',
+            );
+
+            if (!nameElement) return;
+
+            const text = nameElement.textContent.toLowerCase();
+
+            // mostrar u ocultar según coincidencia
+            if (text.includes(query)) {
+                li.style.display = "";
+            } else {
+                li.style.display = "none";
+            }
+        });
+    });
+}
+
+//importar contactos mediante csv
+//para que cuando pulse el botón se abra selector archivos
+const buttonTipeFileImportCsv = document.querySelector(
+    '[data-testid="upload-button"]',
+);
+const fileInputmportCsv = document.getElementById("csv-file");
+if (buttonTipeFileImportCsv) {
+    buttonTipeFileImportCsv.addEventListener("click", function () {
+        fileInputmportCsv.click();
+    });
+}
+
+// async function importarCSV() {
+//     const input = document.getElementById("csv-file");
+//     const mensaje = document.getElementById("mensaje");
+
+//     if (input.files.length === 0) {
+//         mensaje.innerText = "Selecciona un archivo CSV";
+//         return;
+//     }
+
+//     const file = input.files[0];
+//     const formData = new FormData();
+//     formData.append("csv", file);
+
+//     mensaje.innerText = "Importando...";
+//     let csrfToken = $('meta[name="csrf-token"]').attr("content");
+//     try {
+//         const response = await fetch("api/clientes/import-csv", {
+//             method: "POST",
+//             headers: {
+//                 "X-CSRF-TOKEN": csrfToken,
+//             },
+//             body: formData,
+//         });
+
+//         if (response.ok) {
+//             mensaje.innerText = "✅ Contactos importados correctamente";
+//         } else {
+//             mensaje.innerText = "❌ Error al importar";
+//         }
+//     } catch (error) {
+//         console.error(error);
+//         mensaje.innerText = "❌ Error de conexión";
+//     }
+// }
+
+function ocultarTodo() {
+    document.getElementById("client_info_001").style.display = "none";
+    document.getElementById("add_client_001").style.display = "none";
+    document.getElementById("no_clients_001").style.display = "none";
+    document.getElementById("export_clients_001").style.display = "none";
+    document.getElementById("export_clients_button_001").style.display = "none";
+}
+
+const hash = window.location.hash;
+
+if (hash === "#exportar") {
+    ocultarTodo();
+    document.getElementById("export_clients_button_001").style.display =
+        "block";
+}
+
+async function importarCSV() {
+    const input = document.getElementById("csv-file");
+    const mensaje = document.getElementById("mensaje");
+
+    if (input.files.length === 0) {
+        alert("Selecciona un archivo CSV");
+        return;
+    }
+
+    const file = input.files[0];
+    const formData = new FormData();
+    formData.append("csv", file);
+
+    mensaje.innerText = "Importando...";
+
+    let csrfToken = $('meta[name="csrf-token"]').attr("content");
+
+    try {
+        const response = await fetch("api/clientes/import-csv", {
+            method: "POST",
+            headers: {
+                "X-CSRF-TOKEN": csrfToken,
+            },
+            body: formData,
+        });
+
+        const data = await response.json(); // 👈 SIEMPRE leer JSON
+
+        if (!response.ok) {
+            // ❌ ERROR DEL BACKEND
+            alert(data.error || "Error al importar");
+            mensaje.innerText = "❌ Error al importar";
+            return;
+        }
+
+        // ✅ OK
+        mensaje.innerText = "✅ Contactos importados correctamente";
+    } catch (error) {
+        console.error(error);
+        alert("Error de conexión al importar contactos");
+        mensaje.innerText = "❌ Error de conexión";
+    }
+}
+
+const inputImportCsv = document.getElementById("csv-file");
+if (inputImportCsv) {
+    inputImportCsv.addEventListener("change", importarCSV);
+}
+
+//importar contactos desde el móvil
+document.addEventListener("DOMContentLoaded", () => {
+    const toast = document.getElementById("clientsImportToast");
+    const overlay = document.getElementById("clientsImportLoadingOverlay");
+
+    function showToast(message, type = "success") {
+        toast.innerText = message;
+        toast.className = `clients-import-toast ${type} show`;
+
+        setTimeout(() => {
+            toast.className = "clients-import-toast";
+        }, 5000);
+    }
+
+    function setLoading(state) {
+        overlay.classList.toggle("hidden", !state);
+    }
+
+    async function importarDesdeMovil() {
+        if (!("contacts" in navigator && "ContactsManager" in window)) {
+            showToast("Tu navegador no soporta contactos", "error");
+            return;
+        }
+
+        try {
+            const contactos = await navigator.contacts.select(
+                ["name", "tel", "email"],
+                {
+                    multiple: true,
+                },
+            );
+
+            if (!contactos.length) {
+                showToast("No seleccionaste contactos", "error");
+                return;
+            }
+
+            setLoading(true);
+
+            const response = await fetch("/clientes/import-contactos", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": document.querySelector(
+                        'meta[name="csrf-token"]',
+                    ).content,
+                },
+                body: JSON.stringify({ contactos }),
+            });
+
+            setLoading(false);
+
+            const data = await response.json();
+
+            if (response.ok) {
+                showToast("Contactos importados correctamente", "success");
+            } else {
+                showToast("Error al importar contactos", "error");
+            }
+        } catch (error) {
+            setLoading(false);
+            showToast("Error o permiso denegado", "error");
+            console.error(error);
+        }
+    }
+
+    const btn = document.getElementById("btn-contactos");
+
+    if (btn) {
+        btn.addEventListener("click", importarDesdeMovil);
+    }
+});
 //resetear tabla base datos poner tabla a 0 ALTER TABLE payments AUTO_INCREMENT = 1; cerrarModalPreguntaCancelarCita
 /* uid-738-inputEliminarServicio
   document.querySelector('.li-citas262'),
         document.querySelector('.li-sinFinalizar262'),
         document.querySelector('.li-tasas262'),
+        esto es lo que hay que instalar para importar contactos desde el móvil mobil móbil
  */

@@ -2,7 +2,7 @@
     <div class="">
         <header style="background-color: transparent"
             class="b-custom-header b-custom-header_header_oZL1I b-custom-header_headerPadding_gg5dx">
-            {{-- <div class="b-custom-header_left b-custom-header_hasIcon_uCjMI b-custom-header_hasIconEllipsis_gYB6P b-custom-header_left_bWmRf"> --}}
+
             <span class="b-icon iconFont icon-nav-arrow-left b-custom-header_icon_XtAgm"
                 data-testid="b-custom-header-icon-back" style="font-size: 20px;padding-top: 7px;">
             </span>
@@ -13,7 +13,7 @@
                         cliente </span>
                 </div>
             </div>
-            {{-- </div> --}}
+
             <div class="b-custom-header_right b-custom-header_right_uT_uU">
                 <label for="89checkbox_blacklisted"
                     class="b-input-choice_container_aoM6F b-input-choice_containertoggler--revert_I2Vvu">
@@ -595,5 +595,4 @@
             </div>
         </div>
     </div>
-</div>
 </div>

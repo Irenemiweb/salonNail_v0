@@ -14,11 +14,140 @@ use App\Http\Controllers\DeleteAllTemporaryImagesController;
 use App\Http\Controllers\PushNotificationController;
 use App\Models\Reserva;
 use App\Http\Controllers\CronController;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use App\Models\Cliente;
+use Illuminate\Http\Request;
 
 //ruta de prueva para saber si utiliza la key de .env
 Route::get('/check-key', function () {
     return config('app.key');
 });
+
+//ruta para importar contactos desde csv
+Route::post('admin/dashboard/api/clientes/import-csv', function (Request $request) {
+
+    $request->validate([
+        'csv' => 'required|file|mimes:csv,txt',
+    ]);
+
+    $file = $request->file('csv');
+
+    // Detectar separador automáticamente
+    $firstLine = fgets(fopen($file->getRealPath(), 'r'));
+    $delimiter = substr_count($firstLine, ';') > substr_count($firstLine, ',') ? ';' : ',';
+
+    // Leer CSV
+    $rows = array_map(function ($line) use ($delimiter) {
+        return str_getcsv($line, $delimiter);
+    }, file($file->getRealPath()));
+
+    $rows = array_filter($rows);
+
+    // Headers normalizados
+    $headers = array_map(function ($header) {
+        return strtolower(trim($header));
+    }, array_shift($rows));
+
+    $importados = 0;
+    $saltados = 0;
+
+    foreach ($rows as $index => $row) {
+
+        if (count($headers) !== count($row)) {
+            $saltados++;
+            continue;
+        }
+
+        $data = array_combine($headers, $row);
+
+        // 🔥 DETECCIÓN UNIVERSAL DE CAMPOS
+
+        $telefono =
+            $data['phone 1 - value'] ??
+            $data['phone 2 - value'] ??
+            $data['mobile'] ??
+            $data['telefono'] ??
+            $data['phone'] ??
+            null;
+
+        $nombre =
+            $data['first name'] ??
+            $data['given name'] ??
+            $data['nombre'] ??
+            $data['name'] ??
+            '';
+
+        $apellidos =
+            $data['last name'] ??
+            $data['family name'] ??
+            $data['apellidos'] ??
+            '';
+
+        $email =
+            $data['e-mail 1 - value'] ??
+            $data['email'] ??
+            null;
+
+        $empresa =
+            $data['organization name'] ??
+            $data['company'] ??
+            $data['empresa'] ??
+            null;
+
+        // Limpiar teléfono (solo números)
+        if ($telefono) {
+            $telefono = preg_replace('/\D+/', '', $telefono);
+        }
+
+        if (empty($telefono)) {
+            $saltados++;
+            continue;
+        }
+
+       Cliente::updateOrCreate(
+            ['telefono' => $telefono],
+            [
+                'nombre' => $nombre,
+                'apellidos' => $apellidos,
+                'email' => !empty($email) ? $email : null,
+                'empresa' => $empresa,
+            ]
+        );
+
+        $importados++;
+    }
+
+    return response()->json([
+        'success' => true,
+        'importados' => $importados,
+        'saltados' => $saltados
+    ]);
+});
+
+//importar contactos desde el móvil
+Route::post('/clientes/import-contactos', function (Request $request) {
+    $contactos = $request->input('contactos', []);
+
+    // <<< Aquí ponemos el log para depurar
+    Log::info('Contactos recibidos:', $contactos);
+
+    foreach ($contactos as $c) {
+        $nombre = $c['name'][0] ?? 'Sin nombre';
+	$telefono = $c['tel'][0] ?? null;
+	$email = $c['email'][0] ?? null;
+
+        if ($telefono) {
+            Cliente::updateOrCreate(
+                ['telefono' => $telefono],
+                ['nombre' => $nombre, 'email' => $email]
+            );
+        }
+    }
+
+    return response()->json(['success' => true]);
+});
+
+
 //ruta para que valla a login desde admin dashboard/
 Route::get('admin/dashboard/login', function () {
     return redirect('login');

@@ -41,9 +41,10 @@ class Principal extends Component
     $iniciales = $clientes->map(function($cliente) {
         // Obtener las iniciales del nombre y primer apellido
         // $inicial = strtoupper(substr($cliente->name, 0, 1)) . strtoupper(substr($cliente->primer_apellido, 0, 1));
-        $inicial = mb_strtoupper(mb_substr($cliente->name, 0, 1, 'UTF-8'), 'UTF-8')
-         . mb_strtoupper(mb_substr($cliente->primer_apellido, 0, 1, 'UTF-8'), 'UTF-8');
+        $primerApellido = explode(' ', trim($cliente->primer_apellido))[0];
 
+        $inicial = mb_strtoupper(mb_substr($cliente->name, 0, 1, 'UTF-8'), 'UTF-8')
+            . mb_strtoupper(mb_substr($primerApellido, 0, 1, 'UTF-8'), 'UTF-8');
         return $inicial;
     });
     $this->id_inputSearch33 = '';
